@@ -63,5 +63,5 @@ main :: ∀ eff. Eff
 	) RequestAnimationFrameId
 main = do
 	window <- window
-	current <- now
-	requestAnimationFrame (keepLogging initialState (unInstant current) (unInstant current) window) window
+	current <- unInstant <$> now
+	requestAnimationFrame (keepLogging initialState current current window) window
